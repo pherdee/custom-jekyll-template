@@ -1,0 +1,32 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Ferdi Sonmezay - Custom-Jekyll-Template!
+email: hi@ferdisonmezay.cpö
+description: > # this means to ignore newlines until "baseurl:"
+
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "http://ferdisonmezay.com" # the base hostname & protocol for your site
+twitter_username: fsonmezay
+github_username:  fsonmezay
+# logo-img: http://ferdisonmezay.com/2015/images/logo.png
+# logo-text: FERDİ SÖNMEZAY
+# logo-text-small: Free Software, Software Craftsmanship, Photography
+logo-img: http://ferdisonmezay.com/2015/images/logo.png
+logo-text: Custom-Jekyll-Template
+logo-text-small: Free Software, Software Craftsmanship, Photography
+logo-width: 55
+
+# Build settings
+markdown: kramdown
+
+# Pagination
+paginate: 3
+
+# Gems
+gems: [jekyll-paginate]

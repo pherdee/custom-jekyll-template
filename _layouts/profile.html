@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<article class="post" style="background-color:#{{page.backcolor}}; padding:100px 0px 50px;">
+  <div class="container">
+    <header class="post-header" style="color:#{{page.fontcolor}}">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="row">
+              <img class="img-circle img-thumbnail" width="150" height="150"
+                   style="background-image:url({{site.baseurl}}/images/no-person.jpg); background-size:cover; background-position:center center; background-repeat:no-repeat;"
+                   src="{{site.baseurl}}/images/{{page.username}}.jpg">
+          </div>
+        </div>
+
+        <div class="col-md-10">
+          <div class="row">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <p class="lead" style="margin-bottom:5px;">{{page.job-title}}</p>
+          </div>
+          <div class="row">
+            <ul class="horizontal-list">
+              {% if page.website %}
+              <li><a href="{{page.website}}" target="_blank" style="color:#{{page.fontcolor}}">website</a></li>
+              {% endif %}
+              {% if page.github %}
+              <li><a href="http://github.com/{{page.github}}" target="_blank" style="color:#{{page.fontcolor}}">github</a></li>
+              {% endif %}
+              {% if page.twitter %}
+              <li><a href="http://twitter.com/{{page.twitter}}" target="_blank" style="color:#{{page.fontcolor}}">twitter</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </header>
+  </div>
+</article>
+<div class="container" style="padding-bottom:40px; padding-top:40px;">
+  <div class="post-content">
+    {{ content }}
+  </div>
+</div>
+
+<div style="background-color:#fff; padding:100px 0px; margin-top:100px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+          <h3>Entries</h3>
+      </div>
+      <div class="col-md-9" style="padding-top:20px;">
+        {% for post in site.posts %}
+          {% if post.author == page.username %}
+            <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+            <p style="color:#aaa;"><i>{{ post.date | date: "%b %-d, %Y" }}</i></p>
+            {% for tag in post.tags %}
+            <span class="label label-default">{{ tag }}</span>
+            {% endfor %}
+            <hr/>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

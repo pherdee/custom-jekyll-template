@@ -1,0 +1,170 @@
+---
+layout: default
+---
+
+
+  <header class="jumbotron hero-spacer"
+          style="background-image:url('{{ site.baseurl }}/images/banner.jpg'); background-color:#0278AE;
+                 margin:0px; background-size: cover; background-position: center center; height:450px; color:#fff;">
+    <div class="container">
+      <div style="width:60%; margin-top:100px;">
+        <h1>Mobiliz AR-GE Blog! </h1>
+        <p>
+          We will publish some technical and technological entries on this blog!
+        </p>
+    </div>
+    </div>
+  </header>
+
+<!-- posts -->
+<div style="background-color:#fff;">
+  <div class="container" id="posts" style="padding:100px 0pc 50px;">
+    <div class="row">
+      <br><br>
+      {% for post in paginator.posts %}
+      <div class="col-md-12" style="margin-bottom:15px; border:#ddd 1px solid; border-left:#{{ post.backcolor }} 5px solid;">
+        <div class="row">
+            <div class="col-md-1 col-sm-1 col-xs-1 col-lg-1">
+              <img class="img-circle img-thumbnail" style="margin-top:18px;" width="70" src="{{ site.baseurl }}/images/{{ post.author }}.jpg">
+            </div>
+            <div class="col-md-11 col-sm-11 col-xs-11 col-lg-11">
+              <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+              <p style="color:#aaa;"><i>{{ post.date | date: "%b %-d, %Y" }}</i></p>
+              {% for tag in post.tags %}
+              <span class="label label-default">{{ tag }}</span>
+              {% endfor %}
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        {% if paginator.total_pages > 1 %}
+        <nav>
+          <ul class="pagination">
+
+              {% if paginator.previous_page %}
+              <li>
+                <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Previous</a>
+              </li>
+              {% else %}
+              <li class="disabled">
+                <span>&laquo; Previous</span>
+              </li>
+              {% endif %}
+
+
+            {% for page in (1..paginator.total_pages) %}
+             {% if page == paginator.page %}
+             <li class="active">
+               <span>{{ page }}</span>
+             </li>
+             {% elsif page == 1 %}
+              <li>
+               <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+             </li>
+             {% else %}
+              <li>
+               <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+             </li>
+             {% endif %}
+           {% endfor %}
+
+
+              {% if paginator.next_page %}
+              <li>
+                <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+              </li>
+              {% else %}
+              <li class="disabled">
+                <span>Next &raquo;</span>
+              </li>
+              {% endif %}
+            </li>
+          </ul>
+        </nav>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- posts -->
+
+<!-- about -->
+<div id="about" style="background-color:#4CB648; color:#fff; height:550px; padding-top:150px;">
+  <div class="container" style="padding:50px 0pc 50px;">
+    <div class="row" >
+      <div class="col-md-3">
+        <h2>About</h2>
+      </div>
+      <div class="col-md-9" style="padding-top:30px;">
+        <p class="text-justify">this is about section</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- about -->
+
+
+  <div class="container" id="team" style="padding:50px 0pc 50px;">
+    <!-- team -->
+    <div class="text-center" style="padding:50px 0px 50px;">
+      <h2>Team</h2>
+    </div>
+    <div class="row">
+      {% for my_page in site.pages %}
+        {% if my_page.layout == 'profile' and my_page.enabled %}
+        <div class="col-md-3">
+            <div class="well beyaz-arkaplan text-center borderless" style="height:320px;">
+                <div class="row text-center">
+                    <img class="img-circle img-thumbnail" width="100" height="100"
+                         style="background-image:url({{site.baseurl}}/images/no-person.jpg); background-size:cover; background-position:center center; background-repeat:no-repeat;"
+                         src="{{site.baseurl}}/images/{{my_page.username}}.jpg">
+                </div>
+                <div class="row">
+
+                    <h4 style="margin:10px 0px 0px 0px; padding:0px;">
+                        <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+                    </h4>
+                    <p style="margin:0px; padding:0px; color:#bbb;">{{my_page.job-title}}</p>
+                </div>
+                <div class="row text-left" style="color:#999; padding:0px 15px;">
+                  <small>
+                  {% if my_page.twitter %}
+                  <br><strong>Twitter</strong> : <a href="http://twitter.com/{{my_page.twitter}}" target="_blank">@{{my_page.twitter}}</a>
+                  {% endif %}
+
+                  {% if my_page.github %}
+                  <br/><strong>Github</strong> : <a href="http://github.com/{{my_page.github}}" target="_blank">{{my_page.github}}</a>
+                  {% endif %}
+
+                  {% if my_page.website %}
+                  <br/><a href="{{my_page.website}}" target="_blank">Personal Website</a>
+                  {% endif %}
+                </small>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+
+  </div>
+<!-- eof-team -->
+
+<!-- Contact -->
+<div style="background-color:#fff;">
+  <div class="container" id="contact" style="padding:100px 0pc 50px;">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>Contact Info</h2>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- EOF Contact -->

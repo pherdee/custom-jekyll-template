@@ -1,0 +1,70 @@
+<header class="site-header">
+
+  <div class="wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand-logo" href="{{ site.baseurl }}/">
+            <div class="logo">
+            	<img src="{{ site.logo-img }}" width="{{site.logo-width}}">
+            </div>
+            <div class="brand">
+            	{{ site.logo-text }}
+            	<p>{{ site.logo-text-small }}</p>
+            </div>
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right">
+            {% if page.url == "/" %}
+            <li>
+                <a class="page-scroll" href="#page-top">Home</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="#posts">Posts</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="#about">About</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="#team">Team</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="#contact">Contact</a>
+            </li>
+            {% else %}
+            <li>
+                <a class="page-scroll" href="{{ site.baseurl }}/#page-top">Home</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="{{ site.baseurl }}/#posts">Posts</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="{{ site.baseurl }}/#about">About</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="{{ site.baseurl }}/#team">Team</a>
+            </li>
+            <li>
+                <a class="page-scroll" href="{{ site.baseurl }}/#contact">Contact</a>
+            </li>
+            {% endif %}
+            {% for my_page in site.pages %}
+              {% if my_page.title and my_page.layout != 'profile' %}
+              <li><a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+  </div>
+
+</header>
